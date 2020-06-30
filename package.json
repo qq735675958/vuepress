@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    },
+    "dependencies": {
+        "global": "^4.4.0",
+        "vuepress": "^1.0.0-rc.1"
+    }
+}
