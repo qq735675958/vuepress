@@ -1,5 +1,6 @@
+
 module.exports = {
-    title: '我的博客',
+    title: '个人文档',
     description: '欢迎来到我的博客',
     base: '/', // 项目根路径
     dest: '/dist/', // 打包后的文件夹路径，为了方便，我把 dist 文件夹放到了根目录上
@@ -18,9 +19,9 @@ module.exports = {
     },
     // 主题配置
     themeConfig: {
+        lastUpdated: 'Last Updated',
         // 顶部导航
         nav: [
-            { text: '首页', link: '/' },
             { text: '归档', link: '/archives/' },
             { text: '分类', link: '/categories/',
                 items: [
@@ -29,30 +30,35 @@ module.exports = {
                     { text: 'python', link: '/language/python/' },
                     { text: 'egg.js', link: '/language/eggjs/' },
                     { text: 'webpack', link: '/language/webpack/' },
-                    { text: 'nginx', link: '/language/nginx/' },
+                    { text: 'nginx', link: '/nginx/' },
                     { text: 'docker', link: '/language/docker/' },
                 ]
             },
             { text: '关于我', link: '/about/' }
         ],
-
         // 侧边栏
-        // sidebar: [
-        //     '/'
-        // ],
+        sidebar: {
+            '/nginx/':[
+                {
+                    title: "Nginx 配置",
+                    collapsable: true,
+                    children: [
+                        { title: "起步", path: "/nginx/" },
+                    ]
+                }
+            ]
+        },
         sidebarDepth: 2, // 默认 1 提取到 h2，0 为禁用，2 为 h2，h3
         displayAllHeaders: false, // 默认值：false 侧边栏只会显示由当前活动页面的标题组成的链接
         activeHeaderLinks: false, // 默认值：true 滚动时通过 hash 高亮侧边栏标题
-
         // Git 仓库和编辑链接
         repo: 'https://github.com/qq735675958', // 你的仓库
         repoLabel: 'GitHub', // 导航栏上的文本
-
         // editLinks: true,
         // 默认为 "Edit this page"
         // editLinkText: '编辑此页面'
         themeConfig: {
             lastUpdated: 'Last Updated', // string | boolean
         }
-    }
+    },
 }
