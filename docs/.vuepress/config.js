@@ -27,8 +27,9 @@ module.exports = {
                 items: [
                     { text: 'Node.js', link: '/language/chinese/' },
                     { text: 'js', link: '/language/js/' },
+                    { text: 'react', link: '/react/' },
                     { text: 'python', link: '/language/python/' },
-                    { text: 'egg.js', link: '/language/eggjs/' },
+                    { text: 'Nodejs', link: '/language/eggjs/' },
                     { text: 'webpack', link: '/language/webpack/' },
                     { text: 'nginx', link: '/nginx/' },
                     { text: 'docker', link: '/language/docker/' },
