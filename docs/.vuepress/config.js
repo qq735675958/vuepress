@@ -2,8 +2,7 @@
 module.exports = {
     title: '个人文档',
     description: '欢迎来到我的博客',
-    base: '/', // 项目根路径
-    dest: '/dist/', // 打包后的文件夹路径，为了方便，我把 dist 文件夹放到了根目录上
+    base: '/vuepressBlog/', // 项目根路径
     // head 标签中的额外内容
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }] // 这个是标签页 logo
@@ -58,7 +57,7 @@ module.exports = {
         repoLabel: 'GitHub', // 导航栏上的文本
         // editLinks: true,
         // 默认为 "Edit this page"
-        // editLinkText: '编辑此页面'
+        editLinkText: '编辑此页面',
         themeConfig: {
             lastUpdated: 'Last Updated', // string | boolean
         }
