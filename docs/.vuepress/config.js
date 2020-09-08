@@ -1,6 +1,6 @@
 
 module.exports = {
-    title: '个人文档',
+    title: '个人文档笔记',
     description: '欢迎来到我的博客',
     base: '/vuepressBlog/', // 项目根路径
     // head 标签中的额外内容
@@ -22,6 +22,7 @@ module.exports = {
         // 顶部导航
         nav: [
             { text: '归档', link: '/archives/' },
+
             { text: '分类', link: '/categories/',
                 items: [
                     { text: 'Node.js', link: '/language/chinese/' },
@@ -32,9 +33,11 @@ module.exports = {
                     { text: 'webpack', link: '/language/webpack/' },
                     { text: 'nginx', link: '/nginx/' },
                     { text: 'docker', link: '/language/docker/' },
+                    { text: 'git相关', link: '/language/git/' }
                 ]
             },
             { text: 'js代码片段', link: '/function/' },
+            { text: '前端库', link: '/bookmarks/' },
             { text: '关于我', link: '/about/' }
         ],
         // 侧边栏

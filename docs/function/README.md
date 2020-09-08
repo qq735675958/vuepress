@@ -153,46 +153,45 @@ function getBlob(url) {
 }
 ```
 
+### iframe标签方法下载
+```js
+  let downloadFileUrl = "http://localhost:3000"
+  let elemIF = document.createElement("iframe");
+  elemIF.src = downloadFileUrl;
+  elemIF.style.display = "none";
+  document.body.appendChild(elemIF);
+```
 
 ### 以二进制流方式下载
 ```js
 /**
  * 以文件流的形式下载文件
- * @param url       文件地址
- * @param params    文件参数
- * @param method    请求方法
+ * @param data        文件流对象
+ * @param type        application 参数
+ * @param fileName    文件名 不传自动获取
  */
 
-export function downloadFileByBlob(url, params = {}, method = 'get', fileName) {
-  const token = 'bearer ' + sessionStorage.token
-  return new Promise((resolve, reject) => {
-    axios.defaults.headers['content-type'] = 'application/json;charset=UTF-8'
-    axios.defaults.headers['Authorization'] = token
-    axios({
-      method: method,
-      url: url, // 请求地址
-      data: params, // 参数
-      responseType: 'blob' // 表明返回服务器返回的数据类型
-    }).then(
-      response => {
-        console.log(response, '----response----')
-        // 获取不到这个字段 f**k
-        // console.log('expect to get this word--', response.headers['Content-Disposition']);
-        const blob = new Blob([response.data], { type: 'application/vnd.ms-excel' })
-        if (window.navigator.msSaveOrOpenBlob) { // ie导出
-          navigator.msSaveBlob(blob, fileName + '.xlsx')
-        } else {
-          const link = document.createElement('a')
-          link.href = window.URL.createObjectURL(blob)
-          link.download = fileName
-          link.click()
-          // 释放内存
-          window.URL.revokeObjectURL(link.href)
-        }
-      },
-    )
-  })
+export function downloadFileByBlob(data, type="application/vnd.ms-excel", fileName) {
+    let blob = new Blob([data], {type: `application/${type};charset=utf-8`});
+    // 获取heads中的filename文件名
+    let downloadElement = document.createElement('a');
+    // 创建下载的链接
+    let href = window.URL.createObjectURL(blob);
+    downloadElement.href = href;
+    // 获取文件名
+    const content = req.getResponseHeader('Content-Disposition');
+    const reqFileName = content && content.split(';')[1].split('filename=')[1];
+    // 下载后文件名
+    downloadElement.download = fileName || reqFileName;
+    document.body.appendChild(downloadElement);
+    // 点击下载
+    downloadElement.click();
+    // 下载完成移除元素
+    document.body.removeChild(downloadElement);
+    // 释放掉blob对象
+    window.URL.revokeObjectURL(href);
 }
+  
 ```
 
 ## 环境判断
@@ -282,6 +281,38 @@ export function getUrlQuery(name, url) {
         }
       }
   }
+```
+## 去重
+### 数组去重
+#### 移除数组中重复的元素
+```
+const filterNonUnique = arr => [ …new Set(arr)];
+```
+### 数组对象去重
+#### 移除数组中重复的元素
+```
+let person = [
+     {id: 0, name: "小明"},
+     {id: 1, name: "小张"},
+     {id: 2, name: "小李"},
+     {id: 3, name: "小孙"},
+     {id: 1, name: "小周"},
+     {id: 2, name: "小陈"},  
+];
+
+let obj = {};
+person = person.reduce((cur,next) => {
+    obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
+    return cur;
+},[])
+```
+## 扁平化数组
+### 扁平化多维数组
+```js
+  let flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+      return a.concat(b);
+  }, []);
+  // [0,1,2,3,4,5]
 ```
 
 
