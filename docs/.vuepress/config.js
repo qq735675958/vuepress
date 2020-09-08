@@ -35,6 +35,7 @@ module.exports = {
                     { text: 'docker', link: '/language/docker/' },
                 ]
             },
+            { text: 'js代码片段', link: '/function/' },
             { text: '关于我', link: '/about/' }
         ],
         // 侧边栏
