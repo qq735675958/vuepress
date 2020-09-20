@@ -10,7 +10,6 @@ module.exports = {
     serviceWorker: true,
     // 语言配置
     locales: {
-        // 键名是该语言所属的子路径
         // 作为特例，默认语言可以使用 '/' 作为其路径。
         '/': {
             lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
@@ -18,12 +17,19 @@ module.exports = {
     },
     // 主题配置
     themeConfig: {
-        lastUpdated: 'Last Updated',
         // 顶部导航
         nav: [
-            { text: '归档', link: '/archives/' },
-
-            { text: '分类', link: '/categories/',
+            { 
+                text: '开发规范', 
+                items:[
+                    { text: 'html 规范', link: '/html_standard/' },
+                    { text: 'css 规范', link: '/css_standard/' },
+                    { text: 'js 规范', link: '/js_standard/' },
+                    { text: 'vue 规范', link: '/vue_standard/' },
+                    { text: 'react 规范', link: '/react_standard/' },
+                ]
+            },
+            { text: '技术使用记录', link: '/categories/',
                 items: [
                     { text: 'Node.js', link: '/language/chinese/' },
                     { text: 'js', link: '/language/js/' },
@@ -36,9 +42,18 @@ module.exports = {
                     { text: 'git相关', link: '/language/git/' }
                 ]
             },
-            { text: 'js代码片段', link: '/function/' },
+            { 
+                text: '常用代码片段',
+                items: [
+                    { text: 'css', link: '/code/css/' },
+                    { text: 'js', link: '/code/javascript/' },
+                    { text: 'vue', link: '/code/vue/' },
+                    { text: 'react', link: '/code/react/' },
+                    { text: 'html+css+js', link: '/code/code_mixin/' },
+                ]
+            },
             { text: '前端库', link: '/bookmarks/' },
-            { text: '关于我', link: '/about/' }
+            { text: '随手记', link: '/jottings/' }
         ],
         // 侧边栏
         sidebar: {
@@ -63,6 +78,7 @@ module.exports = {
         editLinkText: '编辑此页面',
         themeConfig: {
             lastUpdated: 'Last Updated', // string | boolean
-        }
+        },
+        lastUpdated: 'Last Updated',
     },
 }
